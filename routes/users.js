@@ -8,6 +8,11 @@ router.get('/', function(req, res, next) {
         res.render('1-users/index.hbs', {classes: classes});
     },3);
 });
+
+
+router.get('/test', function(req, res, next) {
+   res.render('1-test/test.ejs');
+});
   
 
 module.exports = router;

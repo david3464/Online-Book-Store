@@ -6,6 +6,9 @@ var logger = require('morgan');
 var hbs = require('hbs');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var expressLayouts = require('express-ejs-layouts');
+
+
 
 var mongo = require('mongodb'); // npm i mongodb
 var mongoose = require('mongoose'); // npm i mongoose
@@ -24,6 +27,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
