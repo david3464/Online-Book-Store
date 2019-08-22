@@ -5,14 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs');
 var fs = require('fs');
-//var logger = require('morgan');
-//var bodyParser = require('body-parser');
-//var app = express();
-//var { check, validationResult } = require('express-validator');
-//var flash = require('connect-flash');
-//var session = require('express-session');
-//var passport = require('passport');
-//var LocalStrategy = require('passport-local'),Strategy;
+var bodyParser = require('body-parser');
+
 var mongo = require('mongodb'); // npm i mongodb
 var mongoose = require('mongoose'); // npm i mongoose
 mongoose.connect('mongodb://localhost/onlinebookstore',{ useNewUrlParser: true },console.log('connect to MongoDB Local')); //set up mongodb directory
@@ -36,10 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session
 //app.use(session({
