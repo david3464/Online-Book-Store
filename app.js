@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
+const mongoose = require("mongoose");
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -16,6 +18,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
+//Connect to online server database
+mongoose.connect('mongodb://localhost:27017/bkstore', { useNewUrlParser: true }, (err) => {
+if (!err) { console.log('MongoDB Connection Succeeded.') }
+else { console.log('Error in DB connection : ' + err) }
+});
 
 
 app.use(logger('dev'));
