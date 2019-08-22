@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const AuthorSchema = new Schema({
     name : {
         type: String,
-        require: true
+        required: true
     },
     data : {
         type: Date,

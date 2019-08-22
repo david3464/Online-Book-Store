@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
     if(err){
       res.render('authors/new',{
         author:author,
-        errorMessage: 'Error Creating Author'
+        errorMessage: 'Error creating Author'
       })
     } else {
       // res.redirect(`authors/${newAuthor.id}`)
