@@ -3,8 +3,14 @@ var router = express.Router();
 var Author = require('../models/author')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('authors/index')
+router.get('/', async (req, res, next) => {
+  try {
+    const authors = await Author.find({});
+    res.render('authors/index', {authors : authors};
+  } catch {
+
+  }
+  
 });
 
 router.get('/new', (req, res) => {
