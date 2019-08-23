@@ -4,13 +4,19 @@ var Author = require('../models/author')
 
 /* GET users listing. */
 router.get('/', async (req, res, next) => {
-  try {
-    const authors = await Author.find({});
-    res.render('authors/index', {authors : authors};
-  } catch {
-
+  let searchOptions ={}
+  if(req.query.name !=null && req.query.name !==''){
+    searchOptions.name = new RegExp(req.query.name,'i')//'i' make it case not sensitive can be type either Capital or Smaller
   }
-  
+  try {
+    const authors = await Author.find (searchOptions);
+    res.render('authors/index', {
+      authors: authors,
+      searchOptions: req.query
+    });
+  } catch {
+    res.redirect('/')
+  }
 });
 
 router.get('/new', (req, res) => {
