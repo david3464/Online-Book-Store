@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var Author = require('../models/author')
 
-/* GET users listing. */
+//app.use('/authors', authorsRouter);
+
+/* GET Author Listing. */
 router.get('/', async (req, res, next) => {
   let searchOptions ={}
   if(req.query.name !=null && req.query.name !==''){
@@ -19,10 +21,12 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+//New Author Route
 router.get('/new', (req, res) => {
   res.render('authors/new', {author: new Author()})
 });
 
+//Create Author Route
 router.post('/', (req, res) => {
   const author = new Author ({
     name : req.body.name
