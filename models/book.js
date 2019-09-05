@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const coverImageBasePath = 'uploads/bookCovers'
+
 //Create Book Schema
 const ItemSchema = new Schema({
     title : {
@@ -38,3 +40,4 @@ const ItemSchema = new Schema({
     }
 })
 module.exports = Item = mongoose.model('Item', ItemSchema);
+module.exports.coverImageBasePath = coverImageBasePath;
